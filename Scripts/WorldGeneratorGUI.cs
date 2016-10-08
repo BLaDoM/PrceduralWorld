@@ -77,3 +77,20 @@ public class WorldGeneratorGUI : Editor {
     }
 
 }
+
+[CustomEditor(typeof(NameGenerator))]
+public class NameGeneratorGUI : Editor {
+
+    public override void OnInspectorGUI() {
+
+        DrawDefaultInspector();
+
+        if (GUILayout.Button("Generate"))
+            FindObjectOfType<NameGenerator>().Start();
+
+        if (GUILayout.Button("Gimme Name"))
+            Debug.Log(FindObjectOfType<NameGenerator>().Generate(new System.Random(), "All"));
+
+    }
+
+}
